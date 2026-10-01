@@ -1,53 +1,101 @@
 # Video script: Boeing 737 MAX, Bug or Business Decision?
 
-**Target length:** about 4 minutes (3:36 to 4:24 allowed), read at a normal pace of roughly 150 words per minute.
+**Target length:** about 4 minutes (3:36 to 4:24 allowed). Roughly 590 words at a calm pace.
 **Audience:** other software developers (imagine a company training course).
-**Visuals:** open on the full poster, then zoom into each numbered panel as you talk about it.
+**The story in one line:** a plane fights its pilots, and we work out whether the code was broken or doing exactly what it was told.
+
+**Zoom cues** are in *[brackets]*. Don't read them out.
 
 ---
 
-## [0:00 to 0:25] Hook (title and the 346 badge)
+## 1. The cockpit (0:00 to 0:35)
 
-Here's a question for you as developers. If your code does exactly what the spec says, and people die, is that a bug? That's the question behind the Boeing 737 MAX. It's an American story, because Boeing and its regulator, the FAA, are both US-based. Three hundred and forty-six people died in two crashes, and a piece of software was at the centre of both.
+*[Start on the full poster, then zoom into the header photo]*
 
-## [0:25 to 1:00] Panel 1: What happened?
+October 2018. A brand-new Boeing 737 MAX takes off from Jakarta. Minutes later, the nose starts pushing down. The pilots pull it back up. It pushes down again. And again.
 
-In October 2018, Lion Air flight 610 crashed into the sea off Indonesia, killing 189 people. Less than five months later, Ethiopian Airlines flight 302 crashed just after take-off, killing 157. Both were brand-new 737 MAXs. Three days after the second crash, the FAA grounded the MAX in the US, and it wasn't cleared to fly again until November 2020, after a software fix. In January 2021, Boeing paid 2.5 billion dollars to settle a US fraud charge.
+They're fighting something, but they don't know what, because nobody ever told them it existed.
 
-## [1:00 to 1:50] Panel 2: The hidden software, MCAS
+Thirteen minutes after take-off, Lion Air flight 610 hits the sea. 189 people die.
 
-So what is MCAS? The MAX has bigger engines than the older 737, and they had to be mounted further forward. That made the nose want to pitch up. Instead of a bigger redesign, Boeing added software called MCAS, which pushes the nose back down automatically. The idea was that the MAX would handle like the old 737, so airlines wouldn't have to put pilots through simulator training.
+*[Zoom onto the 346 badge]*
 
-Figure 2 is a simplified version. It's not Boeing's real code. If the angle-of-attack reading is too high and the flaps are up, trim the nose down by 2.5 degrees, and if the pilot trims back, do it again. Now look at the last line. The plane has two angle-of-attack sensors, like the one in Figure 1, but MCAS relied on just one at a time. So when that one sensor gave bad data, MCAS kept pushing the nose down.
+Five months later, it happens again in Ethiopia. 346 people in total. And the thing pushing the nose down wasn't a mechanical fault. It was software.
 
-## [1:50 to 2:50] Panel 3: Bug or business decision?
+So here's my question for you, as developers: was it a bug?
 
-So was it a bug? I'd argue it wasn't, and that's the scary part.
+## 2. Why the code existed (0:35 to 1:25)
 
-First, one sensor with no cross-check is a single point of failure, in a system that can push a plane's nose down.
+*[Zoom into Panel 2, Figure 1]*
 
-Second, the requirement changed. The safety analysis the FAA saw said MCAS could move the tail by up to 0.6 degrees. The final design used 2.5, over four times more, and that number was news to the FAA's own engineers.
+To answer that, we need to know why this software was written in the first place.
 
-Third, pilots weren't told. MCAS wasn't disclosed to them, and the warning that tells pilots the two sensors disagree only worked if the airline had bought an optional extra.
+Boeing wanted the MAX to burn less fuel, so it fitted bigger engines. They had to sit further forward on the wing, and that made the nose want to pitch up.
 
-And why did all of this matter so much? Because training cost money. Boeing had promised Southwest Airlines a million dollars per plane if its pilots needed simulator training.
+Boeing could have redesigned the plane. Instead, it added a piece of software called MCAS, which quietly pushes the nose back down. That way the MAX would feel just like the old 737.
 
-Put it together and the code did exactly what it was designed to do. The failure was in the decisions around it.
+And that feeling was worth a lot of money. If it flew like the old plane, pilots wouldn't need new simulator training. Boeing even promised Southwest Airlines a million dollars per plane if its pilots did.
 
-## [2:50 to 3:40] Panel 4: What should developers learn?
+So MCAS had one job: make a new plane feel like an old one.
 
-The US House committee that investigated the crashes called them "a horrific culmination of a series of faulty technical assumptions by Boeing's engineers, a lack of transparency on the part of Boeing's management, and grossly insufficient oversight by the FAA." Behind those words are the families in Figure 4, holding photos of the people they lost on Ethiopian 302.
+## 3. Four decisions (1:25 to 2:35)
 
-So I'll leave you with three questions. Would you ship a safety feature that trusts one sensor? When the requirement changes, does your safety analysis change with it, or do the tests still check the old one? And if users don't know your code exists, how can they fight it when it goes wrong? The Lion Air pilots were fighting a system nobody had told them about.
+*[Zoom into Panel 3]*
 
-## [3:40 to 4:00] Close
+Now look at how it was built. There are four decisions here, and each one sounds reasonable on its own.
 
-Most of us won't write flight software. But we all write code that reads one input and trusts it, and we all work under deadlines and budgets. The 737 MAX shows that "it works as designed" is not the same as "it's safe". Thanks for watching.
+*[Point to the first icon]*
+
+One: MCAS read just one angle-of-attack sensor. The plane has two, but the code never compared them. That's a single point of failure in a system that controls the nose.
+
+*[Zoom into Figure 3, the chart]*
+
+Two: the requirement changed. The safety analysis the FAA saw said MCAS could move the tail by 0.6 degrees. The version that actually flew used 2.5, more than four times as much, and the analysis was never brought up to date.
+
+*[Point to the eye icon]*
+
+Three: pilots weren't told. MCAS wasn't in their manuals. The light that warns when the two sensors disagree only worked if the airline paid for an optional extra.
+
+*[Zoom into Figure 2, the code]*
+
+Four: it didn't stop. If the pilot trimmed back, MCAS fired again. So one faulty sensor meant the plane kept pushing the nose down until the pilots ran out of time.
+
+## 4. What happened next (2:35 to 3:05)
+
+*[Zoom into Panel 1, the timeline]*
+
+After the second crash, the 737 MAX was grounded across the world. In the US it stayed on the ground for twenty months, until a software fix. In 2021, Boeing paid 2.5 billion dollars to settle a US fraud charge.
+
+This is an American story: Boeing and its regulator, the FAA, are both US-based. But the lesson isn't only about aviation.
+
+## 5. The answer (3:05 to 3:35)
+
+*[Zoom into the red box in Panel 3]*
+
+So, was it a bug?
+
+I'd say no, and that's the scary part. The code did exactly what it was designed to do. Every line ran as intended. The failure was in the decisions around it: one sensor, a changed requirement nobody re-checked, and a feature kept hidden to save on training costs.
+
+*[Zoom into the quote in Panel 4]*
+
+The US House committee called it "a horrific culmination of a series of faulty technical assumptions", along with "a lack of transparency" and "grossly insufficient oversight".
+
+## 6. Your turn (3:35 to 4:05)
+
+*[Zoom into the families photo, then the questions]*
+
+Behind those words are the families in this photo.
+
+So I'll leave you with three questions. Would you ship code that trusts one sensor? If the requirement changes, does your safety analysis change too? And if users don't know your code exists, how can they fight it when it goes wrong?
+
+Most of us will never write flight software. But we all write code that trusts one input, under a deadline, for someone's budget. "It works as designed" doesn't mean "it's safe".
+
+Thanks for watching.
 
 ---
 
 ## Notes (not part of the narration)
 
-- Read it aloud once with a timer. If you run over 4:24, cut the Southwest sentence. If you're under 3:36, slow down on the three questions, which is where the pauses help most.
-- Say "Figure 1", "Figure 2" and so on as you zoom in, so viewers can follow the poster.
-- Before recording, double-check the facts listed in the chat reply.
+- Time yourself on one read-through. If you're over 4:24, cut the Southwest sentence in part 2. If you're under 3:36, slow down and pause after "was it a bug?" both times it comes up.
+- Record each numbered part as its own clip, then join them. A mistake then only costs you one short section.
+- Read it through and change any phrasing that doesn't sound like you before you record.

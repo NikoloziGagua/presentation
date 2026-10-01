@@ -10,9 +10,11 @@
 
 3. **Fixing problems.** When I opened the first version, the header photo was stretched and the slide was the wrong orientation for A1. I asked AI to fix both.
 
-## What I did not use it for
+4. **Structuring the video script.** My first script jumped between facts and didn't flow, so I asked AI to restructure it as a story: starting in the cockpit, building through the design decisions behind MCAS, and ending on the answer to the poster's question. I then went through it, changed the wording that didn't sound like me, and recorded the narration myself.
 
-I wrote the video script and the narration myself, in my own words, and recorded the video myself. I chose the Boeing 737 MAX topic myself, along with the "bug or business decision?" question it's built around.
+## What I did myself
+
+I chose the Boeing 737 MAX topic and the "bug or business decision?" question that the poster and video are built around. I recorded the voice-over and edited the video myself.
 
 ## Reflection: how useful was it?
 
@@ -22,4 +24,4 @@ It was less reliable on detail. The first layout had text overflowing its boxes,
 
 The biggest lesson was that AI is fast at making something *look* finished, but I still had to understand the topic well enough to know whether it was actually right. That's also the point of the poster: code (or a tool) doing exactly what it was told isn't the same as it being correct.
 
-*(About 410 words.)*
+*(About 470 words.)*
