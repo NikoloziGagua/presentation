@@ -1,6 +1,6 @@
 # Video script: Boeing 737 MAX, Bug or Business Decision?
 
-**Target length:** about 4 minutes (3:36 to 4:24 allowed). Roughly 590 words at a calm pace.
+**Target length:** about 4 minutes (3:36 to 4:24 allowed). Roughly 645 words, so keep a steady pace (about 150 words a minute).
 **Audience:** other software developers (imagine a company training course).
 **The story in one line:** a plane fights its pilots, and we work out whether the code was broken or doing exactly what it was told.
 
@@ -74,7 +74,9 @@ This is an American story: Boeing and its regulator, the FAA, are both US-based.
 
 So, was it a bug?
 
-I'd say no, and that's the scary part. The code did exactly what it was designed to do. Every line ran as intended. The failure was in the decisions around it: one sensor, a changed requirement nobody re-checked, and a feature kept hidden to save on training costs.
+I'd say yes. But not the kind of bug you'd find in a code review. MCAS matched its specification. The spec itself was wrong: one sensor, a requirement that changed without anyone re-checking it, and a feature kept hidden to save on training costs.
+
+Software can pass every test against its specification and still do something nobody intended. Nobody intended MCAS to fly a plane into the ground. That's a bug, even if it's in the spec and not in the code.
 
 *[Zoom into the quote in Panel 4]*
 
@@ -88,7 +90,7 @@ Behind those words are the families in this photo.
 
 So I'll leave you with three questions. Would you ship code that trusts one sensor? If the requirement changes, does your safety analysis change too? And if users don't know your code exists, how can they fight it when it goes wrong?
 
-Most of us will never write flight software. But we all write code that trusts one input, under a deadline, for someone's budget. "It works as designed" doesn't mean "it's safe".
+Most of us will never write flight software. But we all write code that trusts one input, under a deadline, for someone's budget. "It matches the spec" doesn't mean "it's not a bug".
 
 Thanks for watching.
 
