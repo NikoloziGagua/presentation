@@ -34,7 +34,7 @@ Boeing wanted the MAX to burn less fuel, so it fitted bigger engines. They had t
 
 Boeing could have redesigned the plane. Instead, it added a piece of software called MCAS, which quietly pushes the nose back down. That way the MAX would feel just like the old 737.
 
-And that feeling was worth a lot of money. If it flew like the old plane, pilots wouldn't need new simulator training. Boeing even promised Southwest Airlines a million dollars per plane if its pilots did.
+And that feeling was worth a lot of money. If it flew like the old plane, pilots wouldn't need new simulator training. Boeing even promised Southwest Airlines it would pay a million dollars per plane if its pilots ended up needing that simulator training.
 
 So MCAS had one job: make a new plane feel like an old one.
 
